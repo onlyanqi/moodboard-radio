@@ -4,9 +4,9 @@
 
 [Listen](https://onlyanqi.github.io/moodboard-radio/) · [Product brief & storyboard](docs/product-brief.md)
 
-## Rainy Window
+## Three listening rooms
 
-An original pastel SVG room with rain and tea steam that move during playback. Listen to a three-track guitar-led lo-fi playlist by **HoliznaCC0**, with optional rain on its own volume control.
+Choose Rainy Window (a lavender desk and rain), Golden Hour (sunset over the water), or Night Train (a moonlit passing city). Each original SVG scene animates during playback, with a motion toggle. All rooms use the same three-track guitar-led lo-fi collection by **HoliznaCC0**, ordered with a different opening track. Optional rain has its own volume control.
 
 - Keeping Cool — 2:33
 - Come Again — 3:03
@@ -14,7 +14,7 @@ An original pastel SVG room with rain and tea steam that move during playback. L
 
 Full recordings play in sequence and wrap to the beginning. Next track and the expandable playlist let you choose; changing tracks while paused does not start playback. Pause/resume retains your place. Music and rain have independent volume controls, and rain follows music's play/pause/buffering state. Rain starts off on every visit.
 
-The scene includes a saved-room preference, motion toggle, keyboard-accessible controls, and a responsive layout. Golden Hour and Night Train are planned. This is a curated playlist, not a live broadcast.
+The scene includes a saved-room preference, motion toggle, keyboard-accessible controls, and a responsive layout. Room switching preserves listening intent: playing continues on the new room’s opening track, while paused stays paused. Saving a room makes it the default on return, without autoplay. This is a curated playlist, not a live broadcast.
 
 ## Run locally
 
@@ -54,4 +54,4 @@ Music uses a single active audio element. Each connection disposes its predecess
 
 ## Next
 
-Validate the listening experience and test real mobile devices, then expand to three scenes and an accessible scene dial.
+Validate the listening experience and test real mobile devices, then refine the scene curation from feedback.

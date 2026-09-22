@@ -1,22 +1,27 @@
 import {RadioPlayer} from './player.js';
-import {tracks, nextIndex} from './playlist.js';
+import {tracks as catalog, nextIndex} from './playlist.js';
+import {rooms, findRoom} from './rooms.js';
 import {RainLayer} from './rain.js';
 const $ = id => document.getElementById(id);
 const storage = {
   get(key) { try { return localStorage.getItem(`moodboard:v1:${key}`); } catch { return null; } },
   set(key,value) { try { localStorage.setItem(`moodboard:v1:${key}`,value); return true; } catch { return false; } }
 };
+let savedRoom = storage.get('favorite');
+let room = findRoom(savedRoom);
+let tracks = room.order.map(i=>catalog[i]);
 let index = 0;
 const rain = new RainLayer();
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 let motion = storage.get('motion') === null ? !reduced.matches : storage.get('motion') === 'true';
-let saved = storage.get('favorite') === 'rainy-window';
+
 function renderMotion() {
   $('scene').dataset.moving = String(motion && player.state === 'playing');
   $('motion').setAttribute('aria-pressed',String(motion));
   $('motion').textContent = `Motion ${motion ? 'on' : 'off'}`;
 }
 function renderFavorite() {
+  const saved = savedRoom === room.id;
   $('favorite').setAttribute('aria-pressed',String(saved));
   $('favorite').innerHTML = `<span aria-hidden="true">${saved ? '♥' : '♡'}</span> ${saved ? 'Room saved' : 'Save this room'}`;
 }
@@ -26,11 +31,34 @@ function renderTrack() {
   $('station-link').href = track.page;
   $('track-position').textContent = `${index+1} of ${tracks.length}`;
   for(const button of document.querySelectorAll('[data-track]')) {
-    button.setAttribute('aria-pressed',String(Number(button.dataset.track)===index));
+    const i=Number(button.dataset.track);
+    button.setAttribute('aria-pressed',String(i===index));
+    button.children[0].textContent=tracks[i].name; button.children[1].textContent=tracks[i].duration;
   }
   if('mediaSession' in navigator && 'MediaMetadata' in window) {
     navigator.mediaSession.metadata = new MediaMetadata({title:track.name,artist:track.artist,album:'Lofi Jazz Guitar'});
   }
+}
+function renderRoom() {
+  document.body.dataset.room=room.id;
+  document.title=`${room.name} · Moodboard Radio`;
+  $('scene-title').textContent=room.name;
+  $('room-tag').textContent=`${room.name} / ${room.intention}`;
+  $('room-description').textContent=room.description;
+  $('room-caption').textContent=room.caption;
+  $('playlist-caption').textContent=room.playlist;
+  for(const art of document.querySelectorAll('[data-art]')) art.toggleAttribute('hidden',art.dataset.art!==room.id);
+  for(const button of document.querySelectorAll('button[data-room]')) button.setAttribute('aria-pressed',String(button.dataset.room===room.id));
+  renderFavorite(); renderTrack(); renderMotion();
+}
+function selectRoom(id) {
+  if(id===room.id) return;
+  const autoplay=player.wanted;
+  player.pause(); room=findRoom(id); tracks=room.order.map(i=>catalog[i]); index=0;
+  player.station=tracks[index]; player.position=0;
+  renderRoom();
+  $('status').textContent=`${room.name} · Ready when you are.`;
+  if(autoplay) listen();
 }
 const player = new RadioPlayer({onEnded:()=>selectTrack(nextIndex(index,tracks.length),true),onChange({state,message}) {
   const active = ['connecting','buffering','playing'].includes(state);
@@ -57,6 +85,7 @@ async function unlockRain() {
   if(await rain.unlock()) return;
   rain.setVolume(0); $('rain-volume').value='0'; $('rain-value').textContent='Unavailable';
 }
+for(const button of document.querySelectorAll('button[data-room]')) button.addEventListener('click',()=>selectRoom(button.dataset.room));
 $('play').addEventListener('click', () => player.wanted ? player.pause() : listen());
 $('next').addEventListener('click', () => selectTrack(nextIndex(index,tracks.length)));
 for(const button of document.querySelectorAll('[data-track]')) button.addEventListener('click',()=>selectTrack(Number(button.dataset.track)));
@@ -69,8 +98,8 @@ $('rain-volume').addEventListener('input',event=>{
 $('motion').addEventListener('click', () => { motion = !motion; storage.set('motion',String(motion)); renderMotion(); });
 reduced.addEventListener('change', () => { if(reduced.matches) { motion = false; renderMotion(); } });
 $('favorite').addEventListener('click', () => {
-  const next = !saved;
-  if(storage.set('favorite',next ? 'rainy-window' : '')) { saved = next; renderFavorite(); }
+  const next = savedRoom === room.id ? '' : room.id;
+  if(storage.set('favorite',next)) { savedRoom = next; renderFavorite(); }
   else $('status').textContent = 'This browser could not save your room preference.';
 });
 $('about-open').addEventListener('click', () => $('about').showModal());
@@ -79,4 +108,4 @@ if('mediaSession' in navigator) for(const [action,handler] of [['play',listen],[
   try { navigator.mediaSession.setActionHandler(action,handler); } catch { /* Unsupported browser action. */ }
 }
 window.addEventListener('pagehide', () => player.pause());
-renderTrack(); renderFavorite(); renderMotion();
+renderRoom();

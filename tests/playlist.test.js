@@ -12,3 +12,12 @@ test('playlist wraps and every shipped track has matching attribution and integr
    assert.equal(createHash('sha256').update(audio).digest('hex'),source.sha256);
  }
 });
+
+import {rooms,findRoom} from '../src/rooms.js';
+test('every room has a complete playlist, distinct opening track, and safe saved-room fallback',()=>{
+ assert.equal(new Set(rooms.map(r=>r.order[0])).size,3);
+ for(const room of rooms) assert.deepEqual([...room.order].sort(),[0,1,2]);
+ assert.equal(findRoom('night-train').name,'Night Train');
+ assert.equal(findRoom('invalid').id,'rainy-window');
+ assert.equal(findRoom(null).id,'rainy-window');
+});

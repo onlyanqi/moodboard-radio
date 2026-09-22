@@ -14,10 +14,11 @@
 <header><a class="brand" href="./"><img src="./favicon.svg" alt="" width="32" height="32">moodboard <span>radio</span></a><button class="text-button" id="about-open">Behind this room <span aria-hidden="true">↗</span></button></header>
 <main>
 <section class="intro"><p class="eyebrow">A small place to slow down</p><h1>Find your somewhere.</h1><p>Choose a little quiet. Stay for a while.</p></section>
+<nav class="room-picker" aria-label="Choose a listening room"><button data-room="rainy-window" aria-pressed="true"><span aria-hidden="true">☂</span> Rainy Window <small>Focus</small></button><button data-room="golden-hour" aria-pressed="false"><span aria-hidden="true">☀</span> Golden Hour <small>Pause</small></button><button data-room="night-train" aria-pressed="false"><span aria-hidden="true">☾</span> Night Train <small>Unwind</small></button></nav>
 <section class="listening-room" aria-labelledby="scene-title">
 <div class="scene" id="scene" data-moving="false">
-<div class="scene-caption"><span class="room-tag">Room 01 / Focus</span><button id="motion" class="scene-button" aria-pressed="false">Motion off</button></div>
-<svg viewBox="0 0 1200 540" role="img" aria-labelledby="art-title art-description" preserveAspectRatio="xMidYMid slice">
+<div class="scene-caption"><span class="room-tag" id="room-tag">Room 01 / Focus</span><button id="motion" class="scene-button" aria-pressed="false">Motion off</button></div>
+<svg class="room-art" data-art="rainy-window" viewBox="0 0 1200 540" role="img" aria-labelledby="art-title art-description" preserveAspectRatio="xMidYMid slice">
 <title id="art-title">Rainy Window</title><desc id="art-description">An illustrated lavender room, with an arched window overlooking a rainy city, a warm desk lamp, a cup of tea, a notebook, and a sleeping cat.</desc>
 <defs>
 <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#e1d7e9"/><stop offset="1" stop-color="#cbbdd9"/></linearGradient>
@@ -70,11 +71,46 @@
 <!-- Sleeping cat -->
 <ellipse cx="335" cy="476" rx="64" ry="16" fill="#a78293" opacity=".25"/><path d="M271 465q3-54 55-44 43 2 54 46z" fill="#e7c9b3"/><path d="m275 451 1-28 19 12 16-12 7 31q-4 23-25 23t-18-26" fill="#edd4bf"/><path d="m282 453 8 2m11 0 8-2" stroke="#917887" stroke-width="2" stroke-linecap="round"/><path d="M374 466q-21-26-40-10" fill="none" stroke="#c9a792" stroke-width="13" stroke-linecap="round"/>
 </svg>
-<div class="scene-bottom"><span>Somewhere it's always a little rainy.</span><span aria-hidden="true">✳</span></div>
+<svg class="room-art" data-art="golden-hour" hidden viewBox="0 0 1200 540" role="img" aria-labelledby="gold-title golden-desc" preserveAspectRatio="xMidYMid slice">
+<title id="gold-title">Golden Hour</title><desc id="golden-desc">A peach sunset over a waterfront town, seen from a terrace with an open book and a glass of lemonade. Clouds drift and the water shimmers.</desc>
+<defs><linearGradient id="sunset" x2="0" y2="1"><stop stop-color="#eec1ba"/><stop offset="1" stop-color="#f6dfb8"/></linearGradient><linearGradient id="water" x2="0" y2="1"><stop stop-color="#daa8aa"/><stop offset="1" stop-color="#a7adb9"/></linearGradient></defs>
+<path d="M0 0h1200v540H0z" fill="url(#sunset)"/><circle cx="714" cy="205" r="72" fill="#ffe8b4"/>
+<g class="clouds" fill="#fff0d8" opacity=".65"><path d="M290 118q8-24 35-18 19-33 48-9 35-12 49 27z"/><path d="M796 104q13-25 44-12 23-36 50-8 33-9 39 20z"/><path d="M950 157q12-19 29-12 25-25 46 4 28-8 37 8z"/></g>
+<path d="M0 305q144-119 297-38 127-110 301 16 134-66 246-16 174-111 356 5v268H0z" fill="#bd9dac" opacity=".55"/>
+<path d="M0 323h1200v217H0z" fill="url(#water)"/>
+<g fill="#f0d4bf"><path d="M38 262h105v96H38zm124-40h92v136h-92zm113 72h100v64H275zm532-13h78v77h-78zm97-65h110v142H904zm132 45h129v97h-129z"/></g>
+<g fill="#b98c92"><path d="m28 262 65-48 62 48zm123-40 54-42 59 42zm642 59 51-32 49 32zm101-65 64-53 66 53zm133 45 77-45 74 45z"/></g>
+<g fill="#a7909d"><path d="M62 285h17v26H62zm36 0h17v26H98zm84-34h17v28h-17zm34 0h17v28h-17zm-34 48h17v28h-17zm34 0h17v28h-17zm717-47h18v29h-18zm37 0h18v29h-18zm-37 49h18v29h-18zm37 0h18v29h-18zm93-12h20v28h-20zm39 0h20v28h-20z"/></g>
+<g class="water-shimmer" stroke="#f6d5b8" stroke-width="4" stroke-linecap="round" opacity=".7"><path d="M662 347h105m-76 16h58m-113 18h146m-112 19h87m-118 21h162m-130 23h90"/></g>
+<g class="boat"><path d="M417 374h85l-17 16h-49z" fill="#806f8a"/><path d="M459 313v62" stroke="#806f8a" stroke-width="3"/><path d="m454 320-34 47h34z" fill="#f7e5ce"/></g>
+<path d="M0 449h1200v91H0z" fill="#ccaca8"/><path d="M0 413h1200" stroke="#927d91" stroke-width="12"/><path d="M78 414v97m176-97v97m178-97v97m177-97v97m177-97v97m177-97v97m177-97v97" stroke="#927d91" stroke-width="8"/>
+<ellipse cx="614" cy="527" rx="246" ry="49" fill="#e8c8af"/><path d="m468 501 89-10 58 29-109 13z" fill="#fff0d6"/><path d="m558 491 72-2 58 29-73 2z" fill="#f5e1c6"/><path d="m558 493 57 26" stroke="#c3a9a3" stroke-width="2"/>
+<path d="M721 458h35l-4 53h-27z" fill="#efdbb9" stroke="#f9ebd9" stroke-width="3"/><path d="M724 482h29l-2 28h-25z" fill="#eab879"/><path d="m740 495 11-64" stroke="#b48088" stroke-width="3"/><circle cx="752" cy="469" r="12" fill="#f5d789" stroke="#fcebc4" stroke-width="3"/>
+<path d="M109 509v-69m0 27-23-24m23 44 26-28" stroke="#6e8580" stroke-width="4"/><g fill="#7f9586"><ellipse cx="109" cy="437" rx="10" ry="24"/><ellipse cx="83" cy="445" rx="11" ry="23" transform="rotate(-45 83 445)"/><ellipse cx="136" cy="456" rx="10" ry="24" transform="rotate(42 136 456)"/></g><path d="M84 490h50l-9 42H94z" fill="#b8818b"/>
+</svg><svg class="room-art" data-art="night-train" hidden viewBox="0 0 1200 540" role="img" aria-labelledby="night-title night-desc" preserveAspectRatio="xMidYMid slice">
+<title id="night-title">Night Train</title><desc id="night-desc">Inside a quiet mauve train carriage, a moonlit landscape and warm city lights pass a wide window. A scarf and a small bag rest on the seat.</desc>
+<defs><linearGradient id="night-sky" x2="0" y2="1"><stop stop-color="#343e63"/><stop offset="1" stop-color="#8e7f9e"/></linearGradient><clipPath id="train-window"><rect x="226" y="76" width="748" height="290" rx="42"/></clipPath><pattern id="city-lights" width="200" height="240" patternUnits="userSpaceOnUse"><path d="M0 130h65v110H0zm85-70h77v180H85zm84 118h31v62h-31z" fill="#5c617f"/><path d="M12 150h8v13h-8zm25 27h8v13h-8zm65-91h8v13h-8zm26 0h8v13h-8zm-26 28h8v13h-8zm26 55h8v13h-8zm-26 30h8v13h-8zm77-7h7v12h-7z" fill="#e0bd9d"/></pattern></defs>
+<path d="M0 0h1200v540H0z" fill="#9c8ca8"/><path d="M0 0h1200v43H0z" fill="#857791"/><rect x="435" y="20" width="330" height="10" rx="5" fill="#f1d9b7"/>
+<rect x="205" y="57" width="790" height="331" rx="57" fill="#776c8c"/><rect x="218" y="68" width="764" height="310" rx="48" fill="#b7a5bc"/>
+<g clip-path="url(#train-window)"><path d="M200 60h800v330H200z" fill="url(#night-sky)"/><circle cx="778" cy="133" r="31" fill="#f0dec7"/><circle cx="790" cy="124" r="29" fill="#3d456a"/>
+<g fill="#e5d7cd" opacity=".8"><circle cx="300" cy="121" r="2"/><circle cx="404" cy="156" r="1.5"/><circle cx="559" cy="113" r="2"/><circle cx="644" cy="171" r="1.5"/><circle cx="905" cy="111" r="2"/></g>
+<g class="far-landscape"><path d="M-200 296q100-160 220-50t220 15 220-5 220 0 220 0 220 0 220 0v150H-200z" fill="#626483"/></g>
+<g class="passing-city"><path d="M-200 143h1600v240H-200z" fill="url(#city-lights)"/></g>
+<path d="m291 84-36 208m96-208-37 249" stroke="#dfc8d4" stroke-width="13" opacity=".1"/>
+</g>
+<path d="M600 75v295" stroke="#b7a5bc" stroke-width="10"/><path d="M230 387h740" stroke="#c5afc3" stroke-width="10" stroke-linecap="round"/>
+<rect x="68" y="136" width="81" height="106" rx="5" fill="#c0aebf"/><rect x="75" y="144" width="67" height="90" rx="2" fill="#e0ced1"/><path d="M91 177h34m-34 13h34m-34 13h22" stroke="#a58da5" stroke-width="3"/>
+<path d="M1027 129h54v159h-54z" fill="#b4a0b6"/><path d="M1053 132v121" stroke="#dcc3bc" stroke-width="5"/><path d="M1037 253h33v25h-33z" fill="none" stroke="#dcc3bc" stroke-width="5"/>
+<path d="M0 453h1200v87H0z" fill="#665971"/>
+<path d="M117 485V437q0-24 30-24h899q30 0 30 24v48" fill="#b291a7"/><path d="M147 423h299v64H147zm315 0h277v64H462zm294 0h290v64H756z" fill="#ba9aae"/><path d="M109 484h983v33H109z" fill="#9d7e98"/><path d="M139 517v23m921-23v23" stroke="#524b65" stroke-width="12"/>
+<path d="M846 447q-7-42 21-42 26 0 20 42" fill="none" stroke="#77667e" stroke-width="6"/><rect x="819" y="438" width="91" height="50" rx="9" fill="#c8b29e"/><path d="M836 438v50m56-50v50" stroke="#b59c8e" stroke-width="5"/>
+<path d="M334 421h39q-10 39 12 62l-29 15q-24-38-22-77" fill="#dbc2c0"/><path d="m351 492 3 20m7-24 5 20m3-24 7 20m1-24 8 20" stroke="#dbc2c0" stroke-width="3"/>
+</svg>
+<div class="scene-bottom"><span id="room-caption">Somewhere it's always a little rainy.</span><span aria-hidden="true">✳</span></div>
 </div>
-<div class="room-details"><div><p class="eyebrow">Your listening room</p><h2 id="scene-title">Rainy Window</h2><p>A little rain. A little room to think.</p></div><button id="favorite" class="favorite" aria-pressed="false"><span aria-hidden="true">♡</span> Save this room</button></div>
+<div class="room-details"><div><p class="eyebrow">Your listening room</p><h2 id="scene-title">Rainy Window</h2><p id="room-description">A little rain. A little room to think.</p></div><button id="favorite" class="favorite" aria-pressed="false"><span aria-hidden="true">♡</span> Save this room</button></div>
 <div class="player" id="player" tabindex="-1"><button id="play" class="play"><span id="play-icon" aria-hidden="true">▶</span><span id="play-label">Listen</span></button><div class="station"><a id="station-link" href="https://holiznacc0.bandcamp.com/track/keeping-cool" target="_blank" rel="noopener">Keeping Cool · HoliznaCC0 ↗</a><p id="status" role="status">Lo-fi guitar & gentle beats. Ready when you are.</p></div><button id="next" class="text-button next">Next track <span aria-hidden="true">▷|</span></button><label class="volume">Music <input id="volume" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Music volume"></label></div>
-<div class="listening-extras"><p><span id="track-position">1 of 3</span> · A little guitar, a little daydream.</p><label class="rain-volume" for="rain-volume">Rain <input id="rain-volume" type="range" min="0" max="1" step="0.01" value="0" aria-label="Rain volume"><output id="rain-value" for="rain-volume">Off</output></label></div>
+<div class="listening-extras"><p><span id="track-position">1 of 3</span> · <span id="playlist-caption">A little guitar, a little daydream.</span></p><label class="rain-volume" for="rain-volume">Rain <input id="rain-volume" type="range" min="0" max="1" step="0.01" value="0" aria-label="Rain volume"><output id="rain-value" for="rain-volume">Off</output></label></div>
 <details class="track-list"><summary>In this room <span>3 tracks · HoliznaCC0</span></summary><ol>
 <li><button data-track="0" aria-pressed="true"><span>Keeping Cool</span><span>2:33</span></button></li>
 <li><button data-track="1" aria-pressed="false"><span>Come Again</span><span>3:03</span></button></li>
@@ -83,8 +119,8 @@
 <p class="player-note">Music by <a href="https://holiznacc0.bandcamp.com/album/lofi-jazz-guitar" target="_blank" rel="noopener">HoliznaCC0</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> · A curated playlist, not a live broadcast.</p>
 <noscript><p>Enable JavaScript to use the player, or <a href="./audio/keeping-cool.mp3">listen to Keeping Cool</a>.</p></noscript>
 </section>
-<section class="coming"><p>More places, in the making.</p><div><span>☀ Golden Hour</span><span>☾ Night Train</span></div><p class="small">For now, the window is yours.</p></section>
+<section class="coming"><p>Three places. Your own pace.</p><p class="small">The same little guitar collection, a different place to listen.</p></section>
 </main>
 <footer><a href="https://onlyanqi.github.io/portfolio/">A small digital thing by Anqi Chen</a><a href="https://github.com/onlyanqi/moodboard-radio">Notes & source ↗</a></footer>
-<dialog id="about"><button id="about-close" class="text-button">Close ×</button><p class="eyebrow">Behind this room</p><h2>A softer place to press play.</h2><p>Rainy Window pairs an original illustration with three guitar-led tracks from HoliznaCC0’s Lofi Jazz Guitar. A short playlist for settling into your own rhythm.</p><p>The playlist moves to the next track automatically. Add a little rain with its own volume control, or leave the music on its own. The illustration moves while music plays; it isn't synchronized to the beat.</p><h3>Made with intention</h3><p>Scene design and code by Anqi Chen, with playback patterns adapted from <a href="https://github.com/MarkusSteinbrecher/rrradio">rrradio</a> (MIT). Music: <a href="https://holiznacc0.bandcamp.com/album/lofi-jazz-guitar">Keeping Cool, Come Again, and Poor But Happy by HoliznaCC0</a>, from Lofi Jazz Guitar, licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The recordings are unmodified. Optional synthesized rain is mixed separately during playback. No artist endorsement is implied.</p><p>Your saved room and motion preference stay in this browser. No account or app analytics. Audio is served with this site; fonts load from Google Fonts.</p></dialog>
+<dialog id="about"><button id="about-close" class="text-button">Close ×</button><p class="eyebrow">Behind this room</p><h2 id="about-title">A softer place to press play.</h2><p>Three illustrated rooms for focusing, taking a break, or unwinding. Each room starts on a different track from the same three-song HoliznaCC0 collection; the music is not exclusive to a room. Save a room to make it your starting place next time.</p><p>The playlist moves to the next track automatically. Add a little rain with its own volume control, or leave the music on its own. The illustration moves while music plays; it isn't synchronized to the beat.</p><h3>Made with intention</h3><p>Scene design and code by Anqi Chen, with playback patterns adapted from <a href="https://github.com/MarkusSteinbrecher/rrradio">rrradio</a> (MIT). Music: <a href="https://holiznacc0.bandcamp.com/album/lofi-jazz-guitar">Keeping Cool, Come Again, and Poor But Happy by HoliznaCC0</a>, from Lofi Jazz Guitar, licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The recordings are unmodified. Optional synthesized rain is mixed separately during playback. No artist endorsement is implied.</p><p>Your saved room and motion preference stay in this browser. Nothing autoplays when you return. No account or app analytics. Audio is served with this site; fonts load from Google Fonts.</p></dialog>
 </body></html>
