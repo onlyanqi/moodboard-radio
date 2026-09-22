@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Come Again",
+    "artist": "HoliznaCC0",
+    "file": "audio/come-again.mp3",
+    "source": "https://holiznacc0.bandcamp.com/track/come-again",
+    "album": "https://holiznacc0.bandcamp.com/album/lofi-jazz-guitar",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "sha256": "3bfd0d43a3076f3e962fda730b8ccffaa377e05a17e9be81df1929ee77e50623",
+    "duration": 183.0,
+    "changes": "Unmodified artist-provided MP3-128 encoding. Optional synthesized rain is mixed separately during playback.",
+    "retrieved": "2026-09-22"
+  },
+  {
+    "title": "Keeping Cool",
+    "artist": "HoliznaCC0",
+    "file": "audio/keeping-cool.mp3",
+    "source": "https://holiznacc0.bandcamp.com/track/keeping-cool",
+    "album": "https://holiznacc0.bandcamp.com/album/lofi-jazz-guitar",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "sha256": "645d73990f357bc6fc92c0c5d5806a0a02c32794b1d24c503c898752e4317e02",
+    "duration": 153.176,
+    "changes": "Unmodified artist-provided MP3-128 encoding. Optional synthesized rain is mixed separately during playback.",
+    "retrieved": "2026-09-22"
+  },
+  {
+    "title": "Poor But Happy",
+    "artist": "HoliznaCC0",
+    "file": "audio/poor-but-happy.mp3",
+    "source": "https://holiznacc0.bandcamp.com/track/poor-but-happy",
+    "album": "https://holiznacc0.bandcamp.com/album/lofi-jazz-guitar",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "sha256": "c469d2138a5db9e872bf443347ca4217ef6ddfa674734f282dbcc4aa5a337488",
+    "duration": 128.0,
+    "changes": "Unmodified artist-provided MP3-128 encoding. Optional synthesized rain is mixed separately during playback.",
+    "retrieved": "2026-09-22"
+  }
+]

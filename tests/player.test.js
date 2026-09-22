@@ -32,3 +32,14 @@ test('autoplay rejection pauses rather than retrying',async()=>{
 test('buffering returns to playing and volume persists across stations',()=>{
  const {player,audios}=setup();player.setVolume(.2);player.play(station);audios[0].emit('playing');audios[0].emit('waiting');assert.equal(player.state,'buffering');audios[0].emit('playing');assert.equal(player.state,'playing');player.play(station);assert.equal(audios[1].volume,.2);player.pause();
 });
+test('finite track completion advances exactly once and ignores stale end events',()=>{
+ const audios=[];let completed=0;
+ const player=new RadioPlayer({createAudio:()=>{const a=new AudioDouble();audios.push(a);return a;},onEnded:()=>{completed++;player.play({...station,finite:true});}});
+ player.play({...station,finite:true});audios[0].ended=true;audios[0].emit('pause');audios[0].emit('ended');audios[0].emit('ended');assert.equal(completed,1);assert.equal(audios.length,2);assert.equal(player.state,'connecting');player.pause();
+});
+test('finite pause/resume restores position; a new track starts at zero',()=>{
+ const {player,audios}=setup();player.play({...station,finite:true});audios[0].currentTime=42;player.pause();player.resume();audios[1].duration=153;audios[1].emit('loadedmetadata');assert.equal(audios[1].currentTime,42);player.play({...station,finite:true,name:'Other'});assert.equal(player.position,0);player.pause();
+});
+test('finite connection recovery keeps playback position',()=>{
+ const {player,audios}=setup();player.play({...station,finite:true});audios[0].currentTime=30;audios[0].emit('error');audios[1].duration=153;audios[1].emit('loadedmetadata');assert.equal(audios[1].currentTime,30);player.pause();
+});

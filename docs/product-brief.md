@@ -2,7 +2,7 @@
 
 ## Product brief · proposed v0.1
 
-Implementation note (2026-09-22): the first vertical slice uses original synthesized ambient loops. Live radio remains planned because the initially evaluated broadcaster does not permit new embedded players. This document records the original target, not a claim that every feature is shipped.
+Implementation note (2026-09-22): v0.2 replaces the prototype ambient loops with three HoliznaCC0 recordings, credited under the album’s linked CC BY 4.0 license. Rain is an optional independent sound layer. This is a curated playlist rather than a live broadcast. This document records the original target, not a claim that every feature is shipped.
 
 **Find your somewhere.** Three illustrated places to listen, focus, or take a breath.
 

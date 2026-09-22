@@ -21,4 +21,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 Adapted rrradio portions retain their notice in docs/rrradio-LICENSE.txt.
-Third-party audio streams are not covered by this license.
+HoliznaCC0 recordings are separately licensed under CC BY 4.0; see docs/music-sources.json.
+This MIT license does not relicense those recordings.

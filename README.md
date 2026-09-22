@@ -1,12 +1,20 @@
 # Moodboard Radio
 
-**Find your somewhere.** A small illustrated listening room by Anqi Chen.
+**Find your somewhere.** An illustrated listening room by Anqi Chen.
 
 [Listen](https://onlyanqi.github.io/moodboard-radio/) · [Product brief & storyboard](docs/product-brief.md)
 
-## First release: Rainy Window
+## Rainy Window
 
-An original pastel SVG room with rain and tea steam that move only during playback. Includes two original ambient loops (Window Light and Soft Rain), volume, saved-room preference, motion controls, keyboard access, and a responsive layout. Golden Hour and Night Train are planned; they are not playable scenes yet.
+An original pastel SVG room with rain and tea steam that move during playback. Listen to a three-track guitar-led lo-fi playlist by **HoliznaCC0**, with optional rain on its own volume control.
+
+- Keeping Cool — 2:33
+- Come Again — 3:03
+- Poor But Happy — 2:08
+
+Full recordings play in sequence and wrap to the beginning. Next track and the expandable playlist let you choose; changing tracks while paused does not start playback. Pause/resume retains your place. Music and rain have independent volume controls, and rain follows music's play/pause/buffering state. Rain starts off on every visit.
+
+The scene includes a saved-room preference, motion toggle, keyboard-accessible controls, and a responsive layout. Golden Hour and Night Train are planned. This is a curated playlist, not a live broadcast.
 
 ## Run locally
 
@@ -20,26 +28,30 @@ npm test
 npm run build
 ```
 
-GitHub Actions checks the JavaScript, runs playback tests, builds the static files, and deploys `dist/` to GitHub Pages.
+GitHub Actions checks JavaScript, tests playback and audio-file integrity, builds static files, and deploys `dist/` to GitHub Pages. Music files are hosted with the site; there is no dependency on expiring stream URLs.
+
+## Music credits
+
+Keeping Cool, Come Again, and Poor But Happy by **HoliznaCC0**, from [Lofi Jazz Guitar](https://holiznacc0.bandcamp.com/album/lofi-jazz-guitar), licensed under [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+The album describes a public-domain dedication, while its formal license link points to CC BY 4.0. We follow CC BY 4.0 and provide attribution. The artist-provided MP3 encodings are unmodified. Optional synthesized rain is mixed separately during playback. No endorsement is implied. See [track sources, licenses, and file hashes](docs/music-sources.json).
+
+The music is separately licensed; the project's MIT license does not replace its license. Please support the artist through the album page if you enjoy their work.
 
 ## What was built and reused
 
-The scene, interface, product concept, and application integration are original work for this project. The playback controller adapts patterns from Markus Steinbrecher's MIT-licensed **rrradio**, simplified to native browser audio and extended with one bounded retry, connection deadlines, and stale-event isolation. See [attribution](docs/attribution.md).
+The scene, interface, and application integration are original work for this project. The playback controller adapts patterns from Markus Steinbrecher's MIT-licensed **rrradio**, with bounded retries, stale-event isolation, finite-track completion, and position restoration. See [attribution](docs/attribution.md).
 
-The controller separates listening intent from actual playback. Each connection disposes the previous audio before creating the next. Generation checks prevent old callbacks from changing the current player. An audio source can retry once per user attempt; failures then offer Retry or an explicit station change. The controller also supports reconnecting to a live stream when a suitable provider is integrated.
+Music uses a single active audio element. Each connection disposes its predecessor, and generation checks prevent stale callbacks from changing the current player. A failed track retries once per listening attempt; failures then offer Retry or Next track. Rain is original filtered noise synthesized with Web Audio, with no external samples.
 
 ## Limits and privacy
 
-- This release is a soundscape preview, not live radio. A permitted radio source is still needed. Real iOS/Android device testing is still needed.
-- No song metadata or beat analysis is claimed. Illustration motion represents playback only. Soft Rain is synthesized noise, not a field recording.
-- Favorites and motion preference stay in localStorage. No app analytics or accounts. Audio is served with the site; Google Fonts serves the fonts; hosting is GitHub Pages.
-- SomaFM was evaluated but not integrated: its current terms prohibit new third-party embedded players. See the attribution notes.
+- Real iOS/Android device testing is still needed. System volume behavior varies on mobile browsers.
+- No beat analysis is claimed. Illustration motion indicates playback, not audio amplitude.
+- Room and motion preferences stay in localStorage. No accounts or app analytics. Google Fonts serves the fonts; GitHub Pages serves the site and audio.
+- SomaFM was evaluated but not integrated: its terms prohibit new third-party embedded players.
 - User research has not been conducted. The brief describes planned validation, not measured outcomes.
 
 ## Next
 
-Validate the Rainy Window experience, test on real mobile devices, then expand to three scenes and an accessible scene dial. Keep reliability and the listening experience ahead of adding features.
-
-## Original audio
-
-Window Light and Soft Rain are deterministic, synthesized 24-second loops generated by `scripts/generate-audio.py`. They contain sine oscillators and filtered noise, with no third-party samples. Regenerate with `python3 scripts/generate-audio.py`. The generated audio is included under this project's MIT license.
+Validate the listening experience and test real mobile devices, then expand to three scenes and an accessible scene dial.
