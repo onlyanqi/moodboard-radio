@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Moodboard Radio — Find your somewhere</title>
+<meta name="description" content="A little rain. A little room to think. An illustrated listening room by Anqi Chen, with original ambient soundscapes.">
+<meta name="theme-color" content="#eee6ef"><link rel="icon" href="./favicon.svg"><link rel="stylesheet" href="./styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<script type="module" src="./src/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#player">Skip to player</a>
+<header><a class="brand" href="./"><img src="./favicon.svg" alt="" width="32" height="32">moodboard <span>radio</span></a><button class="text-button" id="about-open">Behind this room <span aria-hidden="true">↗</span></button></header>
+<main>
+<section class="intro"><p class="eyebrow">A small place to slow down</p><h1>Find your somewhere.</h1><p>Choose a little quiet. Stay for a while.</p></section>
+<section class="listening-room" aria-labelledby="scene-title">
+<div class="scene" id="scene" data-moving="false">
+<div class="scene-caption"><span class="room-tag">Room 01 / Focus</span><button id="motion" class="scene-button" aria-pressed="false">Motion off</button></div>
+<svg viewBox="0 0 1200 540" role="img" aria-labelledby="art-title art-description" preserveAspectRatio="xMidYMid slice">
+<title id="art-title">Rainy Window</title><desc id="art-description">An illustrated lavender room, with an arched window overlooking a rainy city, a warm desk lamp, a cup of tea, a notebook, and a sleeping cat.</desc>
+<defs>
+<linearGradient id="wall" x2="0" y2="1"><stop stop-color="#e1d7e9"/><stop offset="1" stop-color="#cbbdd9"/></linearGradient>
+<linearGradient id="sky" x2="0" y2="1"><stop stop-color="#a8bdce"/><stop offset="1" stop-color="#e4cad4"/></linearGradient>
+<linearGradient id="desk" x2="0" y2="1"><stop stop-color="#c89ea0"/><stop offset="1" stop-color="#b9858e"/></linearGradient>
+<radialGradient id="glow"><stop stop-color="#ffedb8" stop-opacity=".8"/><stop offset="1" stop-color="#ffedb8" stop-opacity="0"/></radialGradient>
+<clipPath id="window"><path d="M355 390V160a205 140 0 0 1 410 0v230Z"/></clipPath>
+<pattern id="windows" width="32" height="40" patternUnits="userSpaceOnUse"><rect x="9" y="10" width="10" height="16" rx="1" fill="#e9d3c4" opacity=".65"/></pattern>
+<pattern id="rain" width="105" height="105" patternUnits="userSpaceOnUse"><path d="m22 10-6 20m61 32-5 16m-35 35-4 13" stroke="#f2eef7" stroke-opacity=".65" stroke-width="2" stroke-linecap="round"/></pattern>
+</defs>
+<path fill="url(#wall)" d="M0 0h1200v540H0z"/>
+<path d="M0 440h1200v100H0z" fill="#bcaccb"/>
+<path d="M0 442h1200" stroke="#a794b6" stroke-width="3"/>
+<!-- Framed print and a small shelf keep the room lived-in. -->
+<path d="M122 143h124v156H122z" fill="#c0a6b2"/><path d="M130 151h108v140H130z" fill="#f2e7df"/>
+<circle cx="184" cy="200" r="27" fill="#d5adad"/><path d="M139 278q37-79 90 0" fill="#a9b8b7"/><path d="M158 278q33-43 67 0" fill="#809898"/>
+<path d="M98 332h163v10H98z" fill="#9e8094"/><path d="M119 292h12v39h-12zm17-13h16v52h-16zm21 9h10v43h-10z" fill="#877b9c"/><path d="m175 290 12-3 12 42-12 3z" fill="#c7a17e"/>
+<!-- Arched window and city beyond. -->
+<path d="M337 398V160a223 158 0 0 1 446 0v238Z" fill="#9887a7"/>
+<path d="M345 390V160a215 150 0 0 1 430 0v230Z" fill="#f1e4e6"/>
+<g clip-path="url(#window)"><path d="M340 0h450v400H340z" fill="url(#sky)"/>
+<g fill="#b0abc6"><path d="M320 244h90v160h-90zm116-52h68v220h-68zm85 28h123v180H521zm144-46h88v240h-88zm98 79h70v160h-70z"/></g>
+<g fill="#8e92af"><path d="M329 307h132v95H329zm154-56h91v151h-91zm119 38h102v115H602zm119-56h85v170h-85z"/></g>
+<path d="M329 307h132v95H329zm154-56h91v151h-91zm119 38h102v115H602zm119-56h85v170h-85z" fill="url(#windows)"/>
+<path d="m478 251 51-30 50 30zm236-18 50-29 49 29z" fill="#777d98"/>
+<g class="rain"><path d="M340-110h440v650H340z" fill="url(#rain)"/></g>
+<path d="m399 126-13 178m325-212-16 125" stroke="#f9f2f5" stroke-width="7" opacity=".2"/>
+</g>
+<path d="M559 27v365M350 199h422" stroke="#f1e4e6" stroke-width="12"/>
+<path d="M326 393h469v17H326z" fill="#e7d6de"/><path d="M334 410h451v7H334z" fill="#ac91a8"/>
+<!-- Curtain -->
+<path d="M789 0h92q-31 156-7 382l-75 12q12-189-10-394" fill="#bdabc8"/>
+<path d="M805 0q25 169 7 380M833 0q-9 212 12 378M858 0q-26 170 2 373" fill="none" stroke="#a896b8" stroke-width="3"/>
+<!-- Desk lamp and pool of light. -->
+<ellipse cx="924" cy="359" rx="164" ry="131" fill="url(#glow)"/>
+<path d="M892 443h76q9 0 9 10h-94q0-10 9-10" fill="#8a788e"/>
+<path d="M931 445V306l-25-61" stroke="#88758b" stroke-width="9" fill="none"/>
+<path d="M876 230q31-21 58 0l29 59h-118z" fill="#e7b99e"/><ellipse cx="904" cy="290" rx="59" ry="9" fill="#ffe6b3"/>
+<!-- Plant -->
+<path d="M1068 457V323m0 57-26-37m26 70 28-44" stroke="#75877e" stroke-width="5" fill="none"/>
+<g fill="#83968c"><ellipse cx="1067" cy="325" rx="12" ry="28" transform="rotate(10 1067 325)"/><ellipse cx="1039" cy="342" rx="12" ry="25" transform="rotate(-42 1039 342)"/><ellipse cx="1097" cy="369" rx="12" ry="26" transform="rotate(40 1097 369)"/></g>
+<path d="M1039 418h57l-9 49h-39z" fill="#c48f97"/>
+<!-- Table and objects -->
+<path d="M151 462h960l49 78H92z" fill="url(#desk)"/><path d="M151 462h960" stroke="#ddb7b9" stroke-width="7"/>
+<ellipse cx="637" cy="489" rx="220" ry="22" fill="#ab828e" opacity=".25"/>
+<path d="m418 468 127-9 55 43-150 10z" fill="#857a96"/><path d="m425 462 120-9 46 43-136 8z" fill="#efe6de"/><path d="m545 453 45 42" stroke="#cdbbbd" stroke-width="2"/>
+<path d="m451 476 66-4m-54 14 63-5" stroke="#bcadb8" stroke-width="2"/><path d="m571 472 62 28" stroke="#706981" stroke-width="5" stroke-linecap="round"/>
+<ellipse cx="728" cy="470" rx="47" ry="10" fill="#ddbbc6"/><path d="M699 427h54v30q0 21-27 21t-27-21z" fill="#f1dce2"/><path d="M753 433q27-4 22 18-4 13-23 8" stroke="#f1dce2" stroke-width="8" fill="none"/><ellipse cx="726" cy="428" rx="27" ry="6" fill="#997e85"/>
+<g class="steam" fill="none" stroke="#fff5ee" stroke-width="3" stroke-linecap="round" opacity=".6"><path d="M717 406q-10-11 0-22t0-22"/><path d="M735 406q-10-11 0-22t0-22"/></g>
+<!-- Sleeping cat -->
+<ellipse cx="335" cy="476" rx="64" ry="16" fill="#a78293" opacity=".25"/><path d="M271 465q3-54 55-44 43 2 54 46z" fill="#e7c9b3"/><path d="m275 451 1-28 19 12 16-12 7 31q-4 23-25 23t-18-26" fill="#edd4bf"/><path d="m282 453 8 2m11 0 8-2" stroke="#917887" stroke-width="2" stroke-linecap="round"/><path d="M374 466q-21-26-40-10" fill="none" stroke="#c9a792" stroke-width="13" stroke-linecap="round"/>
+</svg>
+<div class="scene-bottom"><span>Somewhere it's always a little rainy.</span><span aria-hidden="true">✳</span></div>
+</div>
+<div class="room-details"><div><p class="eyebrow">Your listening room</p><h2 id="scene-title">Rainy Window</h2><p>A little rain. A little room to think.</p></div><button id="favorite" class="favorite" aria-pressed="false"><span aria-hidden="true">♡</span> Save this room</button></div>
+<div class="player" id="player" tabindex="-1"><button id="play" class="play"><span id="play-icon" aria-hidden="true">▶</span><span id="play-label">Listen</span></button><div class="station"><a id="station-link" href="https://github.com/onlyanqi/moodboard-radio#original-audio" target="_blank" rel="noopener">Window Light · Original loop ↗</a><p id="status" role="status">A soft, slowly breathing chord. Ready when you are.</p></div><label class="volume">Volume <input id="volume" type="range" min="0" max="1" step="0.01" value="0.65"></label><button id="alternative" class="text-button">Try Soft Rain ↗</button></div>
+<p class="player-note">First room preview · Original ambient loops. Live radio is still in the making.</p>
+<noscript><p>Enable JavaScript to use the player, or <a href="./audio/window-light.wav">open the ambient audio file</a>.</p></noscript>
+</section>
+<section class="coming"><p>More places, in the making.</p><div><span>☀ Golden Hour</span><span>☾ Night Train</span></div><p class="small">For now, the window is yours.</p></section>
+</main>
+<footer><a href="https://onlyanqi.github.io/portfolio/">A small digital thing by Anqi Chen</a><a href="https://github.com/onlyanqi/moodboard-radio">Notes & source ↗</a></footer>
+<dialog id="about"><button id="about-close" class="text-button">Close ×</button><p class="eyebrow">Behind this room</p><h2>A softer place to press play.</h2><p>Rainy Window pairs an original illustration with Window Light, a slowly breathing ambient chord. Try Soft Rain for a gentle wash of rain-like sound.</p><p>This first preview plays original, synthesized loops—not a live station. The rain and steam move while audio plays; they aren't synchronized to its beat. Curated live radio will follow when we have a source that permits embedding.</p><h3>Made with intention</h3><p>Scene design and code by Anqi Chen, with playback patterns adapted from <a href="https://github.com/MarkusSteinbrecher/rrradio">rrradio</a> (MIT). The ambient audio is generated from sine waves and filtered noise; no recordings or music samples are used.</p><p>Your saved room and motion preference stay in this browser. No account or app analytics. Audio is served with this site; fonts load from Google Fonts.</p></dialog>
+</body></html>
